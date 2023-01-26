@@ -14,6 +14,7 @@ routes.get('/', (req, res) => {
 
 routes.post('/vendedor', vendedorController.store);
 routes.get('/vendedor', vendedorController.index);
+routes.get('/vendedor/trabalhando', vendedorController.list_actives);
 routes.get('/vendedor/:id', vendedorController.show);
 routes.put('/vendedor/:id', vendedorController.update);
 routes.delete('/vendedor/:id', vendedorController.destroy);

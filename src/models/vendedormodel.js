@@ -5,15 +5,20 @@ const ObjectId = Schema.ObjectId
 
 const vendedorSchema = new Schema({
 
+//listar por ordem alfabetica
+
    id: ObjectId,
    nome: String,
    contratado: Date,
    comissao: Number,
-   horariodetrabalho: {
-        entrada: String,
-        saida: String
-    }
+   jornada: {
+        entrada: Number,
+        saida: Number
+    },
+    ativo:Boolean
 })
+
+
 
 const vendedorModel = mongoose.model('vendedor', vendedorSchema)
 

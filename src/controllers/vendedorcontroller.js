@@ -12,12 +12,19 @@ class vendedorController {
         return res.status(200).json(vendedor);
     }
 
+    async list_actives(req, res){
+        const vendedor = await vendedorModel.find({ ativo: true }).select({ nome: true, jornada: true }).sort({nome:1});
+        const data_agora = new Date();
+        const hora = data_agora.getHours();
+        const trabalhando = vendedor.filter(i => (hora >= i.jornada.entrada) && (hora <= i.jornada.saida))
+        return res.status(200).json(trabalhando);
+    }
+
     async show(req, res){
         const { id } = req.params;
         const vendedor = await vendedorModel.findById(id);
 
-        if (!vendedor) {
-        return res.status(404).json({ message: "vendedor não existe!"});}
+        if (!vendedor) return res.status(404).json({ message: "vendedor não existe!"});
 
         return res.status(200).json(vendedor);
     }

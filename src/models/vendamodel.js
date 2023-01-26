@@ -6,8 +6,8 @@ const ObjectId = Schema.ObjectId
 const vendaSchema = new Schema({
 
    id: ObjectId,
-   cliente: String,
-   vendedor: String,
+   cliente: String, //banco clientes
+   vendedor: String, //banco vendedores
    dataDaCompra: Date,
    valorDaCompra: Number,
    formaDePamento: String
