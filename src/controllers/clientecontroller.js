@@ -10,6 +10,10 @@ class clienteController {
         const cliente = await clienteModel.find();
         return res.status(200).json(cliente);
     }
+    async list_actives(req, res){
+        const cliente = await clienteModel.find({ ativo: true }).select({ nome: true }).sort({nome:1});
+        return res.status(200).json(cliente);
+    }
 
     async show(req, res){
         const { id } = req.params;

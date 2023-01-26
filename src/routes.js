@@ -2,7 +2,8 @@ const { Router } = require('express')
 
 const vendedorController = require('./controllers/vendedorcontroller');
 const clienteController = require('./controllers/clientecontroller');
-const vendaController = require('./controllers/vendacontroller')
+const vendaController = require('./controllers/vendacontroller');
+const cepController = require('./controllers/cepcontroller');
 
 const routes = Router()
 
@@ -22,7 +23,8 @@ routes.delete('/vendedor/:id', vendedorController.destroy);
 //rotas cliente:
 
 routes.post('/cliente', clienteController.store);
-routes.get('/cliente', clienteController.index); 
+routes.get('/cliente', clienteController.index);
+routes.get('/cliente/ativos', clienteController.list_actives); 
 routes.get('/cliente/:id', clienteController.show);
 routes.put('/cliente/:id',clienteController.update);
 routes.delete('/cliente/:id', clienteController.destroy);
@@ -34,6 +36,10 @@ routes.get('/venda', vendaController.index);
 routes.get('/venda/:id', vendaController.show);
 routes.put('/venda/:id',vendaController.update);
 routes.delete('/venda/:id', vendaController.destroy)
+
+//rotas cep:
+
+routes.get('/cep/:cep', cepController.consultaCep)
 
 
 module.exports = routes
