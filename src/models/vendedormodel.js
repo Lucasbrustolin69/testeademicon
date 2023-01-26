@@ -5,8 +5,6 @@ const ObjectId = Schema.ObjectId
 
 const vendedorSchema = new Schema({
 
-//listar por ordem alfabetica
-
    id: ObjectId,
    nome: String,
    contratado: Date,
@@ -15,8 +13,8 @@ const vendedorSchema = new Schema({
         entrada: Number,
         saida: Number
     },
-    ativo:Boolean
-})
+    ativo:Boolean,
+    }, {timestamps: true})
 
 
 

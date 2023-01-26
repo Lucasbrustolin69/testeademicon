@@ -7,7 +7,7 @@ class clienteController {
     }
 
     async index(req, res){
-        const cliente = await clienteModel.find();
+        const cliente = await clienteModel.find().populate('vendedor')
         return res.status(200).json(cliente);
     }
     async list_actives(req, res){

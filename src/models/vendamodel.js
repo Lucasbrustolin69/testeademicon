@@ -6,12 +6,11 @@ const ObjectId = Schema.ObjectId
 const vendaSchema = new Schema({
 
    id: ObjectId,
-   cliente: String, //banco clientes
-   vendedor: String, //banco vendedores
-   dataDaCompra: Date,
+   cliente: { type: mongoose.Schema.Types.ObjectId, ref: 'cliente' },
+   vendedor: { type: mongoose.Schema.Types.ObjectId, ref: 'vendedor' },
    valorDaCompra: Number,
    formaDePamento: String
-})
+}, {timestamps: true})
 
 const vendaModel = mongoose.model('venda', vendaSchema)
 

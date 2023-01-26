@@ -1,5 +1,6 @@
 
 const vendedorModel = require('../models/vendedormodel')
+const vendaModel = require('../models/vendamodel')
 
 class vendedorController {
     async store(req, res){
@@ -23,10 +24,24 @@ class vendedorController {
     async show(req, res){
         const { id } = req.params;
         const vendedor = await vendedorModel.findById(id);
-
         if (!vendedor) return res.status(404).json({ message: "vendedor não existe!"});
 
-        return res.status(200).json(vendedor);
+        const vendas = await vendaModel.find({ vendedor: vendedor._id });//possivel aggregate aqui
+        // .aggregate([
+        //     {
+        //       $sort:{createdAt }
+        //     },
+        //     {
+        //       $group: {
+        //         _id: { x : "$x" },
+        //         y: { $first : "$y" }
+        //       }
+        //     }
+        //   ]) todo
+        const resumo = { vendedor, vendas };
+        
+
+        return res.status(200).json(resumo);
     }
 
     async update(req, res) {

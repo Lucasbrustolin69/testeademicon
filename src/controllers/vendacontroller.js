@@ -7,7 +7,7 @@ class vendaController {
     }
 
     async index(req, res){
-        const venda = await vendaModel.find();
+        const venda = await vendaModel.find().populate(['vendedor', 'cliente']);
         return res.status(200).json(venda);
     }
 
