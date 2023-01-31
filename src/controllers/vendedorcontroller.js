@@ -38,6 +38,8 @@ class vendedorController {
         //       }
         //     }
         //   ]) todo
+
+        
         const resumo = { vendedor, vendas };
         
 
